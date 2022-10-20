@@ -59,7 +59,10 @@ library
     import:           warnings
 
     -- Modules exported by the library.
-    exposed-modules:  Problem0001
+    exposed-modules:  
+        Problem0001,
+        Problem0003,
+        Problem0006
 
     -- Modules included in this library but not exported.
     -- other-modules:
