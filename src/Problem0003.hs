@@ -6,9 +6,13 @@ module Problem0003 (answer) where
 
 primeFactors :: Integer -> Integer -> [Integer] -> [Integer]
 primeFactors num currentFactor factors 
-    | num == currentFactor          = factors ++ [currentFactor]
-    | num `mod` currentFactor == 0  = primeFactors (num `div` currentFactor) 2 (factors ++ [currentFactor])
-    | otherwise                     = primeFactors num (currentFactor + 1) factors
+    | num == currentFactor          = updatedFactors
+    | num `mod` currentFactor == 0  = primeFactors newNumber 2 updatedFactors
+    | otherwise                     = primeFactors num incrementedFactor factors
+    where 
+        newNumber = num `div` currentFactor
+        incrementedFactor = currentFactor + 1
+        updatedFactors = factors ++ [currentFactor]
             
 answer :: IO ()
 answer = print $ maximum $ primeFactors 600851475143 2 []
